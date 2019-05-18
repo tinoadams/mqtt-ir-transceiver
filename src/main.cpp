@@ -73,11 +73,11 @@ void setup(void)
   if (SPIFFS.begin())
   {
     sendToDebug("*IR: mounted file system\n");
-    if (SPIFFS.exists("/config.json"))
+    if (SPIFFS.exists("/ir_config.json"))
     {
       //file exists, reading and loading
       sendToDebug("*IR: reading config file\n");
-      File configFile = SPIFFS.open("/config.json", "r");
+      File configFile = SPIFFS.open("/ir_config.json", "r");
       if (configFile)
       {
         sendToDebug("*IR: opened config file\n");
@@ -144,7 +144,7 @@ void setup(void)
   wifiManager.addParameter(&custom_mqtt_pass);
   wifiManager.addParameter(&custom_mqtt_prefix);
 
-  if ( digitalRead(TRIGGER_PIN) == BUTTON_ACTIVE_LEVEL || (!SPIFFS.exists("/config.json")) )
+  if ( digitalRead(TRIGGER_PIN) == BUTTON_ACTIVE_LEVEL || (!SPIFFS.exists("/ir_config.json")) )
   {
     // Force enter configuration
     wifiManager.resetSettings();
@@ -211,7 +211,7 @@ void setup(void)
     json["mqtt_port"] = mqtt_port;
     json["mqtt_secure"] = mqtt_secure;
 
-    File configFile = SPIFFS.open("/config.json", "w");
+    File configFile = SPIFFS.open("/ir_config.json", "w");
     if (configFile)
     {
       char tmpBuff[400];
@@ -222,6 +222,7 @@ void setup(void)
       configFile.close();
     }
     else
+    
     {
       sendToDebug("*IR: failed to open config file for writing\n");
     }

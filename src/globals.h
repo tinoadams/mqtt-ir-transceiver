@@ -10,25 +10,25 @@
 #define SLOT_SIZE 300   // Size of single slot
 #define SEQ_SIZE 10     // Raw sequnece size
 
-//#define DEBUG X
+#define DEBUG X
 
 #define VERSION "0.10"
 
 #ifdef DEBUG
  // dev device (wemos)
-#define RECV_PIN 13    // D7 - GPIO13
-#define TRANS_PIN 14   // D5 - GPIO14
+#define RECV_PIN 4    // D2 - GPIO4
+#define TRANS_PIN 5   // D1 - GPIO5
 #define TRIGGER_PIN 15 // D8 - GPIO15
 #define LED_PIN 2      // D4 - GPIO2
 #define BUTTON_ACTIVE_LEVEL HIGH
 
 #else
  // production device - ESP01
-#define RECV_PIN 0    // D3 - GPIO0 - IR detector/demodulator
-#define TRANS_PIN 3   // RX - GPIO3 - IR LED trasmitter
-#define TRIGGER_PIN 2 // D4 - GPIO2 - trigger reset (press and hold after boot - 5 seconds)
-//#define LED_PIN 1      // D4 - GPIO2
-#define BUTTON_ACTIVE_LEVEL LOW
+#define RECV_PIN 4    // D2 - GPIO4
+#define TRANS_PIN 5   // D1 - GPIO5
+#define TRIGGER_PIN 15 // D8 - GPIO15
+#define LED_PIN 2      // D4 - GPIO2
+#define BUTTON_ACTIVE_LEVEL HIGH
 #endif
 
 #define   TRANSMITTER_FREQ 38

@@ -46,9 +46,9 @@ void MQTTcallback(char* topic, byte* payload, unsigned int length)
   }
   else if (topicSuffix==SUFFIX_WIPE)
   {
-    if (SPIFFS.exists("/config.json"))
+    if (SPIFFS.exists("/ir_config.json"))
     {
-      SPIFFS.remove("/config.json");
+      SPIFFS.remove("/ir_config.json");
     }
     sendToDebug("*IR: Wipe config\n");
   }
